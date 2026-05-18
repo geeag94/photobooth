@@ -24,6 +24,20 @@ jobs:
     - name: Build
       run: npm run build
       
+    - name: Install ImageMagick
+      run: sudo apt-get update && sudo apt-get install -y imagemagick
+      
+    - name: Convert SVG icons to PNG
+      run: |
+        convert -background none -resize 192x192 public/icon-192.svg dist/icon-192.png
+        convert -background none -resize 512x512 public/icon-512.svg dist/icon-512.png
+        
+    - name: Update manifest with PNG icons
+      run: |
+        sed -i 's/icon-192\.svg/icon-192.png/g' dist/manifest.webmanifest
+        sed -i 's/icon-512\.svg/icon-512.png/g' dist/manifest.webmanifest
+        sed -i 's/image\/svg\+xml/image\/png/g' dist/manifest.webmanifest
+        
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4
       with:
