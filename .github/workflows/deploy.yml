@@ -34,9 +34,9 @@ jobs:
         
     - name: Update manifest with PNG icons
       run: |
-        sed -i 's/icon-192\.svg/icon-192.png/g' dist/manifest.webmanifest
-        sed -i 's/icon-512\.svg/icon-512.png/g' dist/manifest.webmanifest
-        sed -i 's/image\/svg\+xml/image\/png/g' dist/manifest.webmanifest
+        sed -i 's/icon-192\.svg/icon-192.png/g' dist/manifest.json
+        sed -i 's/icon-512\.svg/icon-512.png/g' dist/manifest.json
+        sed -i 's/image\/svg\+xml/image\/png/g' dist/manifest.json
         
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4
