@@ -31,8 +31,10 @@ function PhotoFrame({ images, onImageChange, backgroundColor, layout, children }
       </div>
 
       {/* 하단 여백 (문구 영역) */}
-      <div className="mt-4 text-center">
-        {children}
+      <div className="mt-4 w-full flex justify-center">
+        <div className="w-full text-center">
+          {children}
+        </div>
       </div>
     </div>
   )
